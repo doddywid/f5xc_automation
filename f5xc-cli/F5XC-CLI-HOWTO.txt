@@ -1,4 +1,4 @@
-F5 XC IaaC with Terraform how to:
+F5 XC CLI how-to:
 
 1. Generate F5XC API Certificate
    - Navigate to Account menu by clicking top right account button
@@ -8,23 +8,24 @@ F5 XC IaaC with Terraform how to:
    - Put name, select Credential Type "API Certificate", set Password, set Expiry Date
    - Download PKCS12-formatted API Certificate bundle
 
-2. Extract certificate & key from downloaded PKCS12-formatted API Certificate bundle 
-   - Make sure openssl is installed
-   - Extracting certificate
-     # openssl pkcs12 -info -in <tenant-name>.console.ves.volterra.io.api-creds.p12 -out certificate.cert -nokeys -legacy
-   - Extracting private key
-     # openssl pkcs12 -info -in <tenant-name>.console.ves.volterra.io.api-creds.p12 -out private_key.key -nodes -nocerts -legacy
+2. Install vesctl binary by following installation guide on https://gitlab.com/volterra.io/vesctl/blob/main/README.md
 
-3. Use API certificate & private key from step no. 2 above in Terraform variables
-   Please refer to provided variables.tf file
+3. Use API certificate & private key from step no. 2 above in vesconfig file
+   Create $HOME/.vesconfig file with the following content
 
-4. Download *.tf files in this folder
+      server-urls: https://<tenant-name>.console.ves.volterra.io/api
+      p12-bundle: <pkcs12 folder location>/<tenant-name>.console.ves.volterra.io.api-creds.p12
 
-5. Adjust <full-tenant-name> with actuall complete tenant name. Complete tenant name can be found with the following step
-   - Navigate to Account menu by clicking top right account button
-   - Click "Account Setting"
-   - Navigate to "Tenant Settings > Tenant Overview"
-   - Find complete tenant name under "Tenant Information > Tenant ID". Tenant ID format: <tenant_name-randomID>
+   Replace <tenant-name> and <pkcs12 folder location> with correct values.
+
+4. Set environment variables for pkcs12 password set in step no. 1
+   #  export VES_P12_PASSWORD=<pkcs12 password>
+
+   Replace <pkcs12 password> with correct pkcs12 password.
+
+5. Download .yaml files provided in this folder
+   - origin-pool1.yaml 
+   - origin-pool2.yaml
 
 6. Execute terraform
    # terraform init
