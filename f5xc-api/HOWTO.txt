@@ -1,4 +1,5 @@
-Pre-requisite for F5XC API
+F5 XC API how to:
+
 1. Generate F5XC API Token
    - Navigate to Account menu by clicking top right account button
    - Click "Account Setting"
@@ -6,11 +7,13 @@ Pre-requisite for F5XC API
    - Click "+Add Credential"
    - Put name, select Credential Type "API Token", set Expiry Date
    - Copy API Token value
+
 2. Use API Token value in API client header
    For Postman:
    - Inside a request, go to Authorization section
    - Select Auth Type "API Key" 
    - In Value, put API Token with this format: APIToken <API Token value>
+
 3. Create API request
    Use the following method for API request
    - POST (with body): for creating new configuration
@@ -20,3 +23,9 @@ Pre-requisite for F5XC API
    Use postman collection in this folder, replace 
    - <API Token value> with your token value
    - <tenant-name> with your tenant name
+
+4. To create configuration, send "Create" request
+
+5. To update configuration, adjust request body and send "Update" request
+
+6. To delete configuration, send "Delete" request
