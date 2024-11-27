@@ -1,0 +1,51 @@
+metadata:
+  name: lb-arcadia-mk8s-vesctl-routes
+  namespace: default
+  labels: {}
+  annotations: {}
+  disable: false
+spec:
+  domains:
+    - <domain-name>
+  https_auto_cert:
+    port: 443
+    tls_config: { default_security: {} }
+  advertise_on_public_default_vip: {}
+  routes:
+    - simple_route:
+        http_method: ANY
+        path:
+          prefix: /api
+        origin_pools:
+          - pool:
+              tenant: <full-tenant-name>
+              namespace: default
+              name: origin-vesctl-pool-1
+    - simple_route:
+        http_method: ANY
+        path:
+          prefix: /test
+        origin_pools:
+          - pool:
+              tenant: <full-tenant-name>
+              namespace: default
+              name: origin-vesctl-pool-2
+  add_location: false
+  no_challenge: {}
+  user_id_client_ip: {}
+  disable_rate_limit: {}
+  waf_exclusion_rules: []
+  data_guard_rules: []
+  blocked_clients: []
+  trusted_clients: []
+  ddos_mitigation_rules: []
+  no_service_policies: {}
+  source_ip_stickiness: {}
+  disable_trust_client_ip_headers: {}
+  disable_ddos_detection: {}
+  disable_malicious_user_detection: {}
+  disable_api_discovery: {}
+  disable_api_definition: {}
+  graphql_rules: []
+  protected_cookies: []
+  internet_vip_info: []
