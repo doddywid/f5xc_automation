@@ -29,7 +29,14 @@ F5 XC CLI how-to:
    - origin-pool2.yaml
    - lb.yaml
 
-6. WAF Policy
+6. Adjust <full-tenant-name> with actuall complete tenant name. Complete tenant name can be found with the following step
+   - Navigate to Account menu by clicking top right account button
+   - Click "Account Setting"
+   - Navigate to "Tenant Settings > Tenant Overview"
+   - Find complete tenant name under "Tenant Information > Tenant ID". Tenant ID format: <tenant_name-randomID>
+   Adjust <domain-name> with intended domain name.
+
+7. WAF Policy
    To create WAF policy, execute the following
    # vesctl configuration create app_firewall -i waf-policy.yaml 
    To update WAF policy, update waf-policy.yaml accordingly, then execute the following
@@ -37,7 +44,7 @@ F5 XC CLI how-to:
    To delete WAF policy, execute the following
    # vesctl configuration delete app_firewall <waf policy name>
 
-7. Origin Pool
+8. Origin Pool
    To create origin pool, execute the following
    # vesctl configuration create origin_pool -i origin-pool1.yaml
    To update origin pool, update origin-pool1.yaml accordingly, then execute the following
@@ -45,7 +52,7 @@ F5 XC CLI how-to:
    To delete origin pool, execute the following
    # vesctl configuration delete origin_pool <origin pool name>
 
-8. HTTP Loadbalancer
+9. HTTP Loadbalancer
    To create HTTP loadbalancer, execute the following
    # vesctl configuration create http_loadbalancer -i lb.yaml 
    To update HTTP loadbalancer, update waf-policy.yaml accordingly, then execute the following
