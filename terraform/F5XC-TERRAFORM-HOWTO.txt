@@ -1,7 +1,7 @@
 F5 XC IaaC with Terraform how to:
 
 1. Generate F5XC API Certificate
-   - Navigate to Account menu by clicking top right account button
+   - On F5 XC Console (web UI), navigate to Account menu by clicking top right account button
    - Click "Account Setting"
    - Navigate to "Personal Management > Credentials"
    - Click "+Add Credential"
@@ -21,7 +21,7 @@ F5 XC IaaC with Terraform how to:
 4. Download *.tf files in this folder
 
 5. Adjust <full-tenant-name> with actuall complete tenant name. Complete tenant name can be found with the following step
-   - Navigate to Account menu by clicking top right account button
+   - On F5 XC Console (web UI), navigate to Account menu by clicking top right account button
    - Click "Account Setting"
    - Navigate to "Tenant Settings > Tenant Overview"
    - Find complete tenant name under "Tenant Information > Tenant ID". Tenant ID format: <tenant_name-randomID>
