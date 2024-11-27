@@ -29,3 +29,5 @@ F5 XC API how to:
 5. To update configuration, adjust request body and send "Update" request
 
 6. To delete configuration, send "Delete" request
+
+Note: HTTP loadbalancer object depends on both origin pool and WAF policy object accordingly. Thus, origin pool and WAF policy object need to be created prior creating HTTP loadbalancer object.
