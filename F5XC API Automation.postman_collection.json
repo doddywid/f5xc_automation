@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "a31cd43c-e3d9-4b68-9ea9-7b3f636a94ad",
+		"name": "F5XC API Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "662121"
+	},
+	"item": [
+		{
+			"name": "Create WAF Policy",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"mywaf-policy\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"blocking\": {},\n    \"default_detection_settings\": {},\n    \"default_bot_setting\": {},\n    \"allow_all_response_codes\": {},\n    \"default_anonymization\": {},\n    \"use_default_blocking_page\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/app_firewalls",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"app_firewalls"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update WAF Policy",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"mywaf-policy\",\n    \"namespace\": \"default\",\n    \"labels\": {},\n    \"annotations\": {},\n    \"disable\": false\n  },\n  \"spec\": {\n    \"blocking\": {},\n    \"detection_settings\": {\n      \"signature_selection_setting\": {\n        \"default_attack_type_settings\": {},\n        \"high_medium_low_accuracy_signatures\": {}\n      },\n      \"enable_suppression\": {},\n      \"disable_staging\": {},\n      \"enable_threat_campaigns\": {},\n      \"default_violation_settings\": {}\n    },\n    \"default_bot_setting\": {},\n    \"allow_all_response_codes\": {},\n    \"default_anonymization\": {},\n    \"use_default_blocking_page\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/app_firewalls/mywaf-policy",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"app_firewalls",
+						"mywaf-policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Origin Pool 1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"origin-appstack-app2-svc\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"origin_servers\": [\n      {\n        \"k8s_service\": {\n          \"service_name\": \"arcadia-app2-svc.default\",\n          \"site_locator\": {\n            \"site\": {\n              \"tenant\": \"<tenant-name>-tqmhniam\",\n              \"namespace\": \"system\",\n              \"name\": \"udf-cluster-mk8s\",\n              \"kind\": \"site\"\n            }\n          },\n          \"vk8s_networks\": {}\n        }\n      }\n    ],\n    \"no_tls\": {},\n    \"port\": 8080,\n    \"same_as_endpoint_port\": {},\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\n    \"endpoint_selection\": \"LOCAL_PREFERRED\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Origin Pool 1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"origin-appstack-app2-svc\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"origin_servers\": [\n      {\n        \"k8s_service\": {\n          \"service_name\": \"arcadia-app2-svc.default\",\n          \"site_locator\": {\n            \"site\": {\n              \"tenant\": \"<tenant-name>-tqmhniam\",\n              \"namespace\": \"system\",\n              \"name\": \"udf-cluster-mk8s\",\n              \"kind\": \"site\"\n            }\n          },\n          \"vk8s_networks\": {}\n        }\n      }\n    ],\n    \"no_tls\": {},\n    \"port\": 9090,\n    \"same_as_endpoint_port\": {},\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\n    \"endpoint_selection\": \"LOCAL_PREFERRED\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools/origin-appstack-app2-svc",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools",
+						"origin-appstack-app2-svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Origin Pool 2",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"origin-appstack-mainapp-svc\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"origin_servers\": [\n      {\n        \"k8s_service\": {\n          \"service_name\": \"arcadia-mainapp-svc.default\",\n          \"site_locator\": {\n            \"site\": {\n              \"tenant\": \"<tenant-name>-tqmhniam\",\n              \"namespace\": \"system\",\n              \"name\": \"udf-cluster-mk8s\",\n              \"kind\": \"site\"\n            }\n          },\n          \"vk8s_networks\": {}\n        }\n      }\n    ],\n    \"no_tls\": {},\n    \"port\": 8080,\n    \"same_as_endpoint_port\": {},\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\n    \"endpoint_selection\": \"LOCAL_PREFERRED\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Origin Pool 2",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"origin-appstack-mainapp-svc\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"origin_servers\": [\n      {\n        \"k8s_service\": {\n          \"service_name\": \"arcadia-mainapp-svc.default\",\n          \"site_locator\": {\n            \"site\": {\n              \"tenant\": \"<tenant-name>-tqmhniam\",\n              \"namespace\": \"system\",\n              \"name\": \"udf-cluster-mk8s\",\n              \"kind\": \"site\"\n            }\n          },\n          \"vk8s_networks\": {}\n        }\n      }\n    ],\n    \"no_tls\": {},\n    \"port\": 9090,\n    \"same_as_endpoint_port\": {},\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\n    \"endpoint_selection\": \"LOCAL_PREFERRED\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools/origin-appstack-mainapp-svc",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools",
+						"origin-appstack-mainapp-svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create LB with Routes",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"lb-from-api\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"domains\": [\n      \"mydomain.com\"\n    ],\n    \"https_auto_cert\": {\n      \"http_redirect\": false,\n      \"add_hsts\": false,\n      \"port\": 443,\n      \"tls_config\": {\n        \"default_security\": {}\n      },\n      \"no_mtls\": {},\n      \"default_header\": {},\n      \"enable_path_normalize\": {},\n      \"non_default_loadbalancer\": {},\n      \"header_transformation_type\": {\n        \"legacy_header_transformation\": {}\n      },\n      \"connection_idle_timeout\": 120000,\n      \"http_protocol_options\": {\n        \"http_protocol_enable_v1_v2\": {}\n      }\n    },\n    \"advertise_on_public_default_vip\": {},\n    \"routes\": [\n      {\n        \"simple_route\": {\n          \"http_method\": \"ANY\",\n          \"path\": {\n            \"prefix\": \"/api\"\n          },\n          \"incoming_port\": {\n            \"no_port_match\": {}\n          },\n          \"origin_pools\": [\n            {\n              \"pool\": {\n                \"tenant\": \"<tenant-name>-tqmhniam\",\n                \"namespace\": \"default\",\n                \"name\": \"origin-appstack-app2-svc\",\n                \"kind\": \"origin_pool\"\n              },\n              \"weight\": 1,\n              \"priority\": 1,\n              \"endpoint_subsets\": {}\n            }\n          ],\n          \"auto_host_rewrite\": {}\n        }\n      },\n            {\n        \"simple_route\": {\n          \"http_method\": \"ANY\",\n          \"path\": {\n            \"prefix\": \"/\"\n          },\n          \"incoming_port\": {\n            \"no_port_match\": {}\n          },\n          \"origin_pools\": [\n            {\n              \"pool\": {\n                \"tenant\": \"<tenant-name>-tqmhniam\",\n                \"namespace\": \"default\",\n                \"name\": \"origin-appstack-mainapp-svc\",\n                \"kind\": \"origin_pool\"\n              },\n              \"weight\": 1,\n              \"priority\": 1,\n              \"endpoint_subsets\": {}\n            }\n          ],\n          \"auto_host_rewrite\": {}\n        }\n      }\n    ],\n    \"app_firewall\": {\n      \"tenant\": \"<tenant-name>-tqmhniam\",\n      \"namespace\": \"default\",\n      \"name\": \"mywaf-policy\",\n      \"kind\": \"app_firewall\"\n    },\n    \"add_location\": true,\n    \"no_challenge\": {},\n    \"user_id_client_ip\": {},\n    \"disable_rate_limit\": {},\n    \"service_policies_from_namespace\": {},\n    \"round_robin\": {},\n    \"disable_trust_client_ip_headers\": {},\n    \"disable_malicious_user_detection\": {},\n    \"disable_api_discovery\": {},\n    \"disable_bot_defense\": {},\n    \"default_sensitive_data_policy\": {},\n    \"disable_api_definition\": {},\n    \"disable_ip_reputation\": {},\n    \"disable_client_side_defense\": {},\n    \"system_default_timeouts\": {},\n    \"disable_threat_mesh\": {},\n    \"l7_ddos_action_default\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/http_loadbalancers",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"http_loadbalancers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update LB with Routes",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"metadata\": {\n    \"name\": \"lb-from-api\",\n    \"disable\": false\n  },\n  \"spec\": {\n    \"domains\": [\n      \"mydomain.com\"\n    ],\n    \"https_auto_cert\": {\n      \"http_redirect\": false,\n      \"add_hsts\": false,\n      \"port\": 443,\n      \"tls_config\": {\n        \"default_security\": {}\n      },\n      \"no_mtls\": {},\n      \"default_header\": {},\n      \"enable_path_normalize\": {},\n      \"non_default_loadbalancer\": {},\n      \"header_transformation_type\": {\n        \"legacy_header_transformation\": {}\n      },\n      \"connection_idle_timeout\": 120000,\n      \"http_protocol_options\": {\n        \"http_protocol_enable_v1_v2\": {}\n      }\n    },\n    \"advertise_on_public_default_vip\": {},\n    \"routes\": [\n      {\n        \"simple_route\": {\n          \"http_method\": \"ANY\",\n          \"path\": {\n            \"prefix\": \"/api\"\n          },\n          \"incoming_port\": {\n            \"no_port_match\": {}\n          },\n          \"origin_pools\": [\n            {\n              \"pool\": {\n                \"tenant\": \"<tenant-name>-tqmhniam\",\n                \"namespace\": \"default\",\n                \"name\": \"origin-appstack-app2-svc\",\n                \"kind\": \"origin_pool\"\n              },\n              \"weight\": 1,\n              \"priority\": 1,\n              \"endpoint_subsets\": {}\n            }\n          ],\n          \"auto_host_rewrite\": {}\n        }\n      },\n      {\n        \"simple_route\": {\n          \"http_method\": \"ANY\",\n          \"path\": {\n            \"prefix\": \"/\"\n          },\n          \"incoming_port\": {\n            \"no_port_match\": {}\n          },\n          \"origin_pools\": [\n            {\n              \"pool\": {\n                \"tenant\": \"<tenant-name>-tqmhniam\",\n                \"namespace\": \"default\",\n                \"name\": \"origin-appstack-mainapp-svc\",\n                \"kind\": \"origin_pool\"\n              },\n              \"weight\": 1,\n              \"priority\": 1,\n              \"endpoint_subsets\": {}\n            }\n          ],\n          \"auto_host_rewrite\": {}\n        }\n      }\n    ],\n    \"app_firewall\": {\n      \"tenant\": \"<tenant-name>-tqmhniam\",\n      \"namespace\": \"default\",\n      \"name\": \"mywaf-policy\",\n      \"kind\": \"app_firewall\"\n    },\n    \"add_location\": true,\n    \"no_challenge\": {},\n    \"user_id_client_ip\": {},\n    \"disable_rate_limit\": {},\n    \"service_policies_from_namespace\": {},\n    \"round_robin\": {},\n    \"disable_trust_client_ip_headers\": {},\n    \"disable_malicious_user_detection\": {},\n    \"disable_api_discovery\": {},\n    \"disable_bot_defense\": {},\n    \"default_sensitive_data_policy\": {},\n    \"disable_api_definition\": {},\n    \"disable_ip_reputation\": {},\n    \"disable_client_side_defense\": {},\n    \"system_default_timeouts\": {},\n    \"disable_threat_mesh\": {},\n    \"l7_ddos_action_default\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/http_loadbalancers/lb-from-api",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"http_loadbalancers",
+						"lb-from-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete LB with Routes",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/http_loadbalancers/lb-from-api",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"http_loadbalancers",
+						"lb-from-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Origin Pool 2",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools/origin-appstack-mainapp-svc",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools",
+						"origin-appstack-mainapp-svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Origin Pool 1",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/origin_pools/origin-appstack-app2-svc",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"origin_pools",
+						"origin-appstack-app2-svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete WAF Policy",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "APIToken <API Token value>",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://<tenant-name>.console.ves.volterra.io/api/config/namespaces/default/app_firewalls/mywaf-policy",
+					"protocol": "https",
+					"host": [
+						"<tenant-name>",
+						"console",
+						"ves",
+						"volterra",
+						"io"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"default",
+						"app_firewalls",
+						"mywaf-policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
