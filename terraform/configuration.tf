@@ -44,7 +44,7 @@ resource "volterra_origin_pool" "origin-tf-arcadia-mainapp" {
   no_tls             = true
   endpoint_selection = "LOCAL_PREFERRED"
 }
-resource "volterra_app_firewall" "wafpolicy-tf" {
+resource "volterra_app_firewall" "waf-policy-tf" {
   name      = "waf-policy-tf"
   namespace = "default"
   allow_all_response_codes = true
