@@ -24,17 +24,33 @@ F5 XC CLI how-to:
    Replace <pkcs12 password> with correct pkcs12 password.
 
 5. Download .yaml files provided in this folder
+   - waf-policy.yaml
    - origin-pool1.yaml 
    - origin-pool2.yaml
+   - lb.yaml
 
-6. Execute terraform
-   # terraform init
-   # terraform plan
-   # terraform apply -auto-approve
+6. WAF Policy
+   To create WAF policy, execute the following
+   # vesctl configuration create app_firewall -i waf-policy.yaml 
+   To update WAF policy, update waf-policy.yaml accordingly, then execute the following
+   # vesctl configuration replace app_firewall -i waf-policy.yaml 
+   To delete WAF policy, execute the following
+   # vesctl configuration delete app_firewall <waf policy name>
 
-7. If modification needed, modify configuration.tf file, then perform
-   # terraform plan
-   # terraform appy -auto-approve
+7. Origin Pool
+   To create origin pool, execute the following
+   # vesctl configuration create origin_pool -i origin-pool1.yaml
+   To update origin pool, update origin-pool1.yaml accordingly, then execute the following
+   # vesctl configuration replace origin_pool -i origin-pool1.yaml 
+   To delete origin pool, execute the following
+   # vesctl configuration delete origin_pool <origin pool name>
 
-8. To delete configuration completely, perform the following 
-   # terraform destroy -auto-approve
+8. HTTP Loadbalancer
+   To create HTTP loadbalancer, execute the following
+   # vesctl configuration create http_loadbalancer -i lb.yaml 
+   To update HTTP loadbalancer, update waf-policy.yaml accordingly, then execute the following
+   # vesctl configuration replace http_loadbalancer -i lb.yaml 
+   To delete HTTP loadbalancer, execute the following
+   # vesctl configuration delete http_loadbalancer <HTTP loadbalancer name>
+
+   HTTP loadbalancer object depends on WAF policy and origin pool accordingly. Thus, WAF policy and origin pool need to be created prior creating HTTP loadbalancer object
