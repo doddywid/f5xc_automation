@@ -1,0 +1,20 @@
+metadata:
+  name: origin-vesctl-pool-1
+  namespace: default
+  disable: false
+spec:
+  origin_servers:
+  - k8s_service: 
+      service_name: arcadia-app2-svc.default
+      site_locator:
+        site:
+          tenant: <full-tenant-name>
+          namespace: system
+          name: udf-cluster-mk8s
+          kind: site
+      vk8s_networks": {}
+  no_tls: {}
+  port: 9090
+  same_as_endpoint_port: {}
+  loadbalancer_algorithm: LB_OVERRIDE
+  endpoint_selection: LOCAL_PREFERRED
