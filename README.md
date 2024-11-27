@@ -1,4 +1,4 @@
-# f5xc_automation
+# F5 Distributed Cloud (XC) Configuration Automation
 
 This repo provides detail of automation step for basic configuration of F5 Distributed Cloud (XC).
 There are 3 automation mechanism provided in this repo:
