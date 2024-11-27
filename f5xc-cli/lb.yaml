@@ -30,6 +30,11 @@ spec:
               tenant: <full-tenant-name>
               namespace: default
               name: origin-vesctl-pool-2
+  app_firewall:
+      tenant: <full-tenant-name>
+      namespace: default
+      name: mywaf-vesctl
+      kind: app_firewall
   add_location: false
   no_challenge: {}
   user_id_client_ip: {}
