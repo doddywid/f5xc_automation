@@ -1,4 +1,4 @@
-Pre-requisite for F5 XC IaaC with Terraform
+F5 XC IaaC with Terraform how to:
 
 1. Generate F5XC API Certificate
    - Navigate to Account menu by clicking top right account button
