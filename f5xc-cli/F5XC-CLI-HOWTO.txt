@@ -1,0 +1,39 @@
+F5 XC IaaC with Terraform how to:
+
+1. Generate F5XC API Certificate
+   - Navigate to Account menu by clicking top right account button
+   - Click "Account Setting"
+   - Navigate to "Personal Management > Credentials"
+   - Click "+Add Credential"
+   - Put name, select Credential Type "API Certificate", set Password, set Expiry Date
+   - Download PKCS12-formatted API Certificate bundle
+
+2. Extract certificate & key from downloaded PKCS12-formatted API Certificate bundle 
+   - Make sure openssl is installed
+   - Extracting certificate
+     # openssl pkcs12 -info -in <tenant-name>.console.ves.volterra.io.api-creds.p12 -out certificate.cert -nokeys -legacy
+   - Extracting private key
+     # openssl pkcs12 -info -in <tenant-name>.console.ves.volterra.io.api-creds.p12 -out private_key.key -nodes -nocerts -legacy
+
+3. Use API certificate & private key from step no. 2 above in Terraform variables
+   Please refer to provided variables.tf file
+
+4. Download *.tf files in this folder
+
+5. Adjust <full-tenant-name> with actuall complete tenant name. Complete tenant name can be found with the following step
+   - Navigate to Account menu by clicking top right account button
+   - Click "Account Setting"
+   - Navigate to "Tenant Settings > Tenant Overview"
+   - Find complete tenant name under "Tenant Information > Tenant ID". Tenant ID format: <tenant_name-randomID>
+
+6. Execute terraform
+   # terraform init
+   # terraform plan
+   # terraform apply -auto-approve
+
+7. If modification needed, modify configuration.tf file, then perform
+   # terraform plan
+   # terraform appy -auto-approve
+
+8. To delete configuration completely, perform the following 
+   # terraform destroy -auto-approve
