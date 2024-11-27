@@ -16,3 +16,7 @@ Pre-requisite for F5XC API
    - POST (with body): for creating new configuration
    - PUT (with body): for updating (patching) existing configuraton
    - DELETE (without body): for deleting existing configuration
+
+   Use postman collection in this folder, replace 
+   - <API Token value> with your token value
+   - <tenant-name> with your tenant name
