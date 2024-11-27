@@ -6,4 +6,4 @@ There are 3 automation mechanism provided in this repo:
 2. IaaC with Terraform
 3. F5 XC CLI (vesctl)
 
-Please go to respective folder for step and sample scripts.
+Please go to respective folder HOWTO files for required steps and sample scripts.
